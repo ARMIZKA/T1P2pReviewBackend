@@ -9,5 +9,6 @@ public class P2pReviewApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(P2pReviewApplication.class, args);
 	}
+
 }
 
