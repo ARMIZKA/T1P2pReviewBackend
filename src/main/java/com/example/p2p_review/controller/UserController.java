@@ -1,6 +1,7 @@
 package com.example.p2p_review.controller;
 
 
+import com.example.p2p_review.dto.response.UserDTO;
 import com.example.p2p_review.model.User;
 import com.example.p2p_review.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -19,9 +20,16 @@ public class UserController {
 
     private final UserService userService;
 
+
+
     public UserController(UserService userService) {
         this.userService = userService;
     }
+
+//    @GetMapping
+//    public ResponseEntity<List<UserDTO>> findAllIntegratedUsers() {
+//        return ResponseEntity.ok(userService.getAllIntegratedUsers());
+//    }
 
     @GetMapping
     @Operation(summary = "Get all users", description = "Retrieve a list of all users")
