@@ -1,6 +1,5 @@
 package com.example.p2p_review.controller;
 
-
 import com.example.p2p_review.model.Meeting;
 import com.example.p2p_review.model.Slot;
 import com.example.p2p_review.service.MeetingService;
@@ -31,7 +30,8 @@ public class MeetingController {
     public ResponseEntity<Meeting> bookSlot(@RequestParam Integer slotId, @RequestBody Meeting meeting) {
         Optional<Slot> slot = slotService.getSlotById(slotId);
 
-        if (slot.isPresent() && slot.get().isAvailable()) {
+        // Используем getAvailable() вместо isAvailable()
+        if (slot.isPresent() && Boolean.TRUE.equals(slot.get().getAvailable())) {
             meeting.setSlot(slot.get());
             Meeting bookedMeeting = meetingService.bookMeeting(meeting);
             return ResponseEntity.status(HttpStatus.CREATED).body(bookedMeeting);

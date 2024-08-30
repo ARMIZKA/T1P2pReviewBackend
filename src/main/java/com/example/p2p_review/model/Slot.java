@@ -1,11 +1,9 @@
 package com.example.p2p_review.model;
 
+
+import jakarta.persistence.*;
 import lombok.Data;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import lombok.Getter;
 
 import java.time.LocalDateTime;
 
@@ -15,9 +13,18 @@ public class Slot {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @ManyToOne
-    private Expert expert;
+
+    // @Column(name = "expert_id", nullable = false)
+    private Integer expertId;
+
+    // @Column(name = "user_id")
+    private Integer userId;
+
     private LocalDateTime startTime;
     private LocalDateTime endTime;
-    private boolean available;
+    @Getter
+    private Boolean available;
+
+
 }
+

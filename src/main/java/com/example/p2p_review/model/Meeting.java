@@ -1,12 +1,8 @@
 package com.example.p2p_review.model;
 
 
+import jakarta.persistence.*;
 import lombok.Data;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,7 +13,13 @@ import java.time.LocalDateTime;
 public class Meeting {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
+
+    @Column(name = "user_id")
+    private Integer userId;
+
+    @Column(name = "expert_id")
+    private Integer expertId;
 
     @Getter
     @Setter

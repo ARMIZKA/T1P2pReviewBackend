@@ -23,11 +23,9 @@ public class SlotController {
     }
 
     @GetMapping("/available")
-    @Operation(summary = "Get available slots", description = "Retrieve available slots for a specific expert within a date range")
-    public ResponseEntity<List<Slot>> getAvailableSlots(@RequestParam Integer expertId,
-                                                        @RequestParam LocalDateTime startDate,
-                                                        @RequestParam LocalDateTime endDate) {
-        List<Slot> slots = slotService.getAvailableSlots(expertId, startDate, endDate);
+    @Operation(summary = "Get available slots", description = "Retrieve available slots for a specific expert")
+    public ResponseEntity<List<Slot>> getAvailableSlots(@RequestParam Integer expertId) {
+        List<Slot> slots = slotService.getAvailableSlots(expertId);
         return ResponseEntity.ok(slots);
     }
 

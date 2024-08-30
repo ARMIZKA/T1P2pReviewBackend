@@ -5,7 +5,6 @@ import com.example.p2p_review.model.Slot;
 import com.example.p2p_review.repository.SlotRepository;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,8 +17,8 @@ public class SlotService {
         this.slotRepository = slotRepository;
     }
 
-    public List<Slot> getAvailableSlots(Integer expertId, LocalDateTime startDate, LocalDateTime endDate) {
-        return slotRepository.findByExpertUserEmployeeIdAndAvailableTrueAndStartTimeBetween(expertId, startDate, endDate);
+    public List<Slot> getAvailableSlots(Integer expertId) {
+        return slotRepository.findByExpertIdAndAvailableTrue(expertId);
     }
 
     public Slot createSlot(Slot slot) {

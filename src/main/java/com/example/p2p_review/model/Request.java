@@ -1,11 +1,7 @@
 package com.example.p2p_review.model;
 
+import jakarta.persistence.*;
 import lombok.Data;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 
 import java.time.LocalDateTime;
 
@@ -15,11 +11,22 @@ public class Request {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @ManyToOne
-    private User customer;
-    @ManyToOne
-    private Expert expert;
-    private String description;
-    private String status; // "PENDING", "APPROVED", "REJECTED"
+
+    private Integer userId;
+    private Integer expertId;
+
     private LocalDateTime createdAt;
+    private String status;
+
+    @Lob
+    private String userComment;
+
+    @Lob
+    private String expertComment;
+
+    @Lob
+    private byte[] userFile;
+
+    @Lob
+    private byte[] expertFile;
 }
