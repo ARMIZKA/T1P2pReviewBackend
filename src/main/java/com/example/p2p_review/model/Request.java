@@ -18,6 +18,10 @@ public class Request {
     private LocalDateTime createdAt;
     private String status;
 
+    private String place;
+
+
+
     @Lob
     private String userComment;
 
